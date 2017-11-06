@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="xnmll's blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="一 Java中的数据类型一 基本类型一种是基本类型(primitive types),共有8种，即int,short, long, byte, float, double, boolean, char(注意，并没有string的基本类型)。 这种类型的定义是通过诸如int a = 3; long b = 255L;的形式来定义的，称为自动变量。值得注意的是，自动变量存的是字面值，不是类的实例，即不">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java字符串详解">
+<meta property="og:url" content="http://yoursite.com/2017/11/06/11-6/index.html">
+<meta property="og:site_name" content="xnmll&#39;s blog">
+<meta property="og:description" content="一 Java中的数据类型一 基本类型一种是基本类型(primitive types),共有8种，即int,short, long, byte, float, double, boolean, char(注意，并没有string的基本类型)。 这种类型的定义是通过诸如int a = 3; long b = 255L;的形式来定义的，称为自动变量。值得注意的是，自动变量存的是字面值，不是类的实例，即不">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://yoursite.com/2017/11/06/11-6/1.png">
+<meta property="og:updated_time" content="2017-11-06T07:53:01.471Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java字符串详解">
+<meta name="twitter:description" content="一 Java中的数据类型一 基本类型一种是基本类型(primitive types),共有8种，即int,short, long, byte, float, double, boolean, char(注意，并没有string的基本类型)。 这种类型的定义是通过诸如int a = 3; long b = 255L;的形式来定义的，称为自动变量。值得注意的是，自动变量存的是字面值，不是类的实例，即不">
+<meta name="twitter:image" content="http://common.cnblogs.com/images/copycode.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/06/11-6/"/>
+
+
+
+
+
+  <title>java字符串详解 | xnmll's blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7382304e49d77ca3dfeaa7af6f2a78d1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">xnmll's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/06/11-6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xnmll">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://www.xnmll.cn/wp-content/uploads/2017/09/index.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xnmll's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java字符串详解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-06T13:10:41+08:00">
+                2017-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/06/11-6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/06/11-6/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一-Java中的数据类型"><a href="#一-Java中的数据类型" class="headerlink" title="一 Java中的数据类型"></a>一 Java中的数据类型</h2><h3 id="一-基本类型"><a href="#一-基本类型" class="headerlink" title="一 基本类型"></a>一 基本类型</h3><p>一种是基本类型(primitive types),共有8种，即int,short, long, byte, float, double, boolean, char(注意，并没有string的基本类型)。</p>
+<p>这种类型的定义是通过诸如int a = 3; long b = 255L;的形式来定义的，称为自动变量。值得注意的是，自动变量存的是字面值，不是类的实例，即不是类的引用，这里并没有类的存在。如int a = 3;这里的a直接指向3这个字面值。这些字面值的数据，由于大小可知，生存期可知(这些字面值固定定义在某个程序块里面，程序块退出后，字段值就消失了)，出于追求速度的原因，就存在于<a href="">栈</a>中。</p>
+<h3 id="二-包装类"><a href="#二-包装类" class="headerlink" title="二 包装类"></a>二 包装类</h3><p>另一种是包装类数据，如Integer, String, Double等将相应的基本数据类型包装起来的类。这些类数据全部存在于<a href="">堆</a>中，Java用new()语句来显示地告诉编译器，在运行时才根据需要动态创建，因此比较灵活，但缺点是要占用更多的时间。 </p>
+<p>举例如下： Java代码 ：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;       </div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span>       </span></div><div class="line"><span class="function">  </span>&#123;   </div><div class="line">      <span class="keyword">int</span> a1 = <span class="number">1</span>;         </div><div class="line">      <span class="keyword">int</span> b1 = <span class="number">1</span>;         </div><div class="line">      <span class="keyword">int</span> c1 = <span class="number">2</span>;         </div><div class="line">      <span class="keyword">int</span> d1 = a1+b1;         </div><div class="line">      Integer c = <span class="number">3</span>;           </div><div class="line">      Integer d = <span class="number">3</span>;           </div><div class="line">      Integer e = <span class="number">321</span>;           </div><div class="line">      Integer f = <span class="number">321</span>;</div><div class="line">      Long    g = <span class="number">3L</span>;  </div><div class="line">     System.out.println(a1==b1);   <span class="comment">//true  结果1          </span></div><div class="line">     System.out.println(c1==d1);   <span class="comment">//true  结果2        </span></div><div class="line">     System.out.println(c==d);     <span class="comment">//true  结果3           </span></div><div class="line">     System.out.println(e==f);     <span class="comment">//false 结果4         </span></div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>分析：</p>
+<p>  结果1：a1==b1如上面所述,会在栈中开辟存储空间存放数据。         </p>
+<p>  结果2：首先它会在栈中创建一个变量为c1的引用，然后查找有没有字面值为2的地址，没找到，就开辟一个存放2这个字面值的地址，然后将c1指向2的地址,d1为两个字面值相加也为2，由于在栈中已经有2这个字面值，便将d1直接指向2的地址。这样，就出现了c1与d1同时均指向2的地址的情况。         </p>
+<p> 在分析下面结果以前让我们先对Java自动拆箱和装箱做个了结：在自动装箱时，把int变成Integer的时候，是有规则的，当你的int的值在-128-IntegerCache.high(127)时，返回的不是一个新new出来的Integer对象，而是一个已经缓存在堆中的Integer对象，（我们可以这样理解，系统已经把-128到127之间的Integer缓存到一个Integer数组中去了，如果你要把一个int变成一个Integer对象，首先去缓存中找，找到的话直接返回引用给你就行了，不必再new一个），如果不在-128-IntegerCache.high(127)时会返回一个新new出来的Integer对象。          </p>
+<p> 结果3：由于3是在范围内所以是从缓存中取数据的，c和d指向同一个对象，结果为true;        </p>
+<p> 结果4：由于321不是在范围内所以不是从缓存中取数据的而是单独有new对象，e和f并没有指向同一个对象，结果为false;</p>
+<h2 id="二-String是一个特殊的包装类数据"><a href="#二-String是一个特殊的包装类数据" class="headerlink" title="二 String是一个特殊的包装类数据"></a>二 String是一个特殊的包装类数据</h2><h3 id="一-String创建"><a href="#一-String创建" class="headerlink" title="一 String创建"></a>一 String创建</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">javaString str = <span class="keyword">new</span> String(<span class="string">"abc"</span>);</div></pre></td></tr></table></figure>
+<p>的形式来创建，也可以用<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String str =<span class="string">"abc"</span>；</div></pre></td></tr></table></figure></p>
+<p>的形式来创建。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">javaString str = <span class="keyword">new</span> String(<span class="string">"abc"</span>);</div></pre></td></tr></table></figure></p>
+<p>创建实例的过程:<br>1首先定义一个str的String类型的引用并存放在栈中<br>2在字符串常量池中查看是否存在内容为”abc”字符串对象<br>3若存在则跳过这个步骤，若不存在，则在字符串常量池中创建一个内容为”abc”的字符串对象<br>4执行new操作，在堆中创建一个指定的对象”abc”，这里堆的对象是字符串常量池“abc”对象的一个拷贝对象<br>5让str指向堆中“abc”这个对象（也就是存储这个对象的在堆中的地址）<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String str =<span class="string">"abc"</span>；</div></pre></td></tr></table></figure></p>
+<p>创建对象的过程:<br>1 首先在常量池中查找是否存在内容为”abc”的字符串对象<br>2 如果不存在则在常量池中创建一个”abc”的字符串对象，并让str引用该对象<br>3 如果存在则直接让str引用该对象<br>注意：常量池属于类信息的一部分，而类信息反映到JVM内存模型中是对应存在于JVM内存模型的方法区，也就是说这个类信息中的常量池概念是存在于在方法区中。一般这种情况下，”abc”在编译时就被写入字节码中，所以class被加载时，JVM就为”abc”在常量池中分配内存，所以和静态区差不多。 </p>
+<h3 id="二-详细例子"><a href="#二-详细例子" class="headerlink" title="二 详细例子"></a>二 详细例子</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123; </div><div class="line">        <span class="comment">/**</span></div><div class="line"><span class="comment">         * 情景一：字符串池</span></div><div class="line"><span class="comment">         * JAVA虚拟机(JVM)中存在着一个字符串常量池，其中保存着很多String对象;</span></div><div class="line"><span class="comment">         * 并且可以被共享使用，因此它提高了效率。</span></div><div class="line"><span class="comment">         * 由于String类是final的，它的值一经创建就不可改变。</span></div><div class="line"><span class="comment">         * 字符串池由String类维护，我们可以调用intern()方法来访问字符串池。 </span></div><div class="line"><span class="comment">         */</span> </div><div class="line">        String s1 = <span class="string">"abc"</span>;    </div><div class="line">        <span class="comment">//↑ 在字符串池创建了一个对象 </span></div><div class="line">        String s2 = <span class="string">"abc"</span>;    </div><div class="line">        <span class="comment">//↑ 字符串常量池中已经存在对象“abc”(共享),所以创建0个对象，累计创建一个对象 </span></div><div class="line">        System.out.println(<span class="string">"s1== s2 : "</span>+(s1==s2));   </div><div class="line">        <span class="comment">//↑ true 指向同一个对象， </span></div><div class="line">        System.out.println(<span class="string">"s1.equals(s2): "</span> + (s1.equals(s2)));   </div><div class="line">        <span class="comment">//↑ true  值相等 </span></div><div class="line">    </div><div class="line">        <span class="comment">/**</span></div><div class="line"><span class="comment">         * 情景二：关于new String("")</span></div><div class="line"><span class="comment">         * </span></div><div class="line"><span class="comment">         */</span> </div><div class="line">        String s3 = <span class="keyword">new</span> String(<span class="string">"abc"</span>); </div><div class="line">        <span class="comment">//↑ 创建了两个对象，一个存放在字符串池中，一个存在堆区中； </span></div><div class="line">        <span class="comment">//↑ 还有一个对象引用s3存放在栈中 </span></div><div class="line">        String s4 = <span class="keyword">new</span> String(<span class="string">"abc"</span>); </div><div class="line">        <span class="comment">//↑ 字符串池中已经存在“abc”对象，所以只在堆中创建了一个对象 </span></div><div class="line">        System.out.println(<span class="string">"s3== s4 : "</span>+(s3==s4)); </div><div class="line">        <span class="comment">//↑false   s3和s4栈区引用的地址不同，堆区对象的地址不同； </span></div><div class="line">        System.out.println(<span class="string">"s3.equals(s4): "</span>+(s3.equals(s4))); </div><div class="line">        <span class="comment">//↑true  s3和s4的值相同 </span></div><div class="line">        System.out.println(<span class="string">"s1== s3 : "</span>+(s1==s3)); </div><div class="line">        <span class="comment">//↑false 存放的地区不同，一个常量池中，一个堆区 </span></div><div class="line">        System.out.println(<span class="string">"s1.equals(s3): "</span>+(s1.equals(s3))); </div><div class="line">        <span class="comment">//↑true  值相同 </span></div><div class="line">      </div><div class="line">        <span class="comment">/**</span></div><div class="line"><span class="comment">         * 情景三： </span></div><div class="line"><span class="comment">         * 由于常量的值在编译的时候就被确定(优化)了。</span></div><div class="line"><span class="comment">         * 在这里，"ab"和"cd"都是常量，因此变量str1的值在编译时就可以确定。</span></div><div class="line"><span class="comment">         * 这行代码编译后的效果等同于： String str1 = "abcd";</span></div><div class="line"><span class="comment">         */</span> </div><div class="line">        String str1 = <span class="string">"ab"</span>+ <span class="string">"cd"</span>;  <span class="comment">//1个对象 </span></div><div class="line">        String str2 = <span class="string">"abcd"</span>;  </div><div class="line">        System.out.println(<span class="string">"str1= str2 : "</span>+ (str1 == str2)); </div><div class="line">        <span class="comment">//↑引用的常量池中同一个对象 </span></div><div class="line">        <span class="comment">/**</span></div><div class="line"><span class="comment">         * 情景四：</span></div><div class="line"><span class="comment">         *  涉及到str2是变量（不全是常量）的相加，所以会生成新的对象，其内部实</span></div><div class="line"><span class="comment">*  现是先new一个StringBuilder，然后 append(str2),append("c");然后让</span></div><div class="line"><span class="comment">*  str3引用toString()返回的对象        </span></div><div class="line"><span class="comment"> */</span>  </div><div class="line">         String str1 = <span class="string">"abc"</span>;        </div><div class="line">         String str2 = <span class="string">"ab"</span>;</div><div class="line">         String str3 = str2+<span class="string">"c"</span>;</div><div class="line">         System.out.println(str1==str3);  <span class="comment">// false</span></div><div class="line">         </div><div class="line">      String str1 = <span class="string">"abc"</span>;        </div><div class="line">       <span class="keyword">final</span> String str2 = <span class="string">"ab"</span>;</div><div class="line">       String str3 = str2+<span class="string">"c"</span>;</div><div class="line">        System.out.println(str1==str3);  <span class="comment">// true</span></div><div class="line">       </div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment"> * 情景五：</span></div><div class="line"><span class="comment">*  intern()方法可以返回该字符串在常量池中的对象的引用</span></div><div class="line"><span class="comment">*   一个初始为空的字符串池，它由类 String私有地维护。 当调用 intern 方法</span></div><div class="line"><span class="comment">*  时，如果池已经包含一个等于此 String对象的字符串（用 equals(Object) 方</span></div><div class="line"><span class="comment">*  法确定），则返回池中的字符串。否则，将此 String对象添加到池中，并返回</span></div><div class="line"><span class="comment">*  此 String 对象的引用。    </span></div><div class="line"><span class="comment"> */</span></div><div class="line">   String str1 = <span class="string">"abc"</span>;        </div><div class="line">    String str2 = newString(<span class="string">"abc"</span>).intern();        </div><div class="line">   System.out.println(str1==str2);   <span class="comment">//true</span></div><div class="line"><span class="comment">/**情景六：</span></div><div class="line"><span class="comment"> * 当我们将str1的值改为"bcd"时，JVM发现在常量池中没有存放该值的地址，</span></div><div class="line"><span class="comment"> * 便开辟了这个地址，并创建了一个新的对象，其字符串的值指向这个地址。</span></div><div class="line"><span class="comment">* 事实上String类被设计成为不可改变(immutable)的类。如果你要改变其值，</span></div><div class="line"><span class="comment">*可以，但JVM在运行时根据新值悄悄创建了一个新对象，然后将这个对象的</span></div><div class="line"><span class="comment">* 地址返回给原来类的引用。这个创建过程虽说是完全自动进行的，但它毕竟</span></div><div class="line"><span class="comment">* 占用了更多的时间。在对时间要求比较敏感的环境中，会带有一定的不良影</span></div><div class="line"><span class="comment">* 响。</span></div><div class="line"><span class="comment">* */</span></div><div class="line">      String str1 = <span class="string">"abc"</span>;</div><div class="line">     String str2 = <span class="string">"abc"</span>;</div><div class="line">      str1 = <span class="string">"bcd"</span>;</div><div class="line">      System.out.println(str1 + <span class="string">","</span> + str2);  <span class="comment">//bcd, abc     </span></div><div class="line">      System.out.println(str1==str2);  <span class="comment">//false</span></div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h2 id="三-Java-JVM"><a href="#三-Java-JVM" class="headerlink" title="三 Java JVM"></a>三 Java JVM</h2><h3 id="一-Java内存模型"><a href="#一-Java内存模型" class="headerlink" title="一 Java内存模型"></a>一 Java内存模型</h3><p>按照官方的说法：Java 虚拟机具有一个堆，堆是运行时数据区域，所有类实例和数组的内存均从此处分配。</p>
+<p>JVM主要管理两种类型内存：堆和非堆，堆内存（Heap Memory）是在 Java 虚拟机启动时创建，非堆内存(Non-heap Memory)是在JVM堆之外的内存。</p>
+<p>简单来说，非堆包含方法区、JVM内部处理或优化所需的内存（如 <a href="http://baike.baidu.com/view/112978.htm#10" target="_blank" rel="external">JIT</a>Compiler，Just-in-time Compiler，即时编译后的代码缓存）、每个类结构（如运行时常数池、字段和方法数据）以及方法和构造方法的代码。</p>
+<p>Java的堆是一个运行时数据区,类的(对象从中分配空间。这些对象通过new、newarray、 anewarray和multianewarray等指令建立，它们不需要程序代码来显式的释放。<strong>堆是由垃圾回收来负责的，堆的优势是可以动态地分配内存大小，</strong>生存期也不必事先告诉编译器<strong>，因为它是在运行时动态分配内存的，Java的垃圾收集器会自动收走这些不再使用的数据。但缺点是，由于要在运行时动态分配内存，存取速度较慢。</strong><br>　　<strong>栈的优势是，存取速度比堆要快，仅次于寄存器，栈数据可以共享。但缺点是，存在栈中的数据大小与生存期必须是确定的，缺乏灵活性。</strong>栈中主要存放一些基本类型的变量数据（int, short, long, byte, float, double, boolean, char）和对象句柄(引用)。 </p>
+<p>虚拟机必须为每个被装载的类型维护一个常量池。常量池就是该类型所用到常量的一个有序集合，包括直接常量（string,integer和 floating point常量）和对其他类型，字段和方法的符号引用。<br>对于String常量，它的值是在常量池中的。而JVM中的常量池在内存当中是以表的形式存在的， 对于String类型，有一张固定长度的CONSTANT_String_info表用来存储文字字符串值，注意：该表只存储文字字符串值，不存储符号引用。说到这里，对常量池中的字符串值的存储位置应该有一个比较明了的理解了。在程序执行的时候,常量池会储存在Method Area,而不是堆中。常量池中保存着很多String对象; 并且可以被共享使用，因此它提高了效率</p>
+<p> 具体关于JVM和内存等知识请参考：</p>
+<p><a href="http://blog.csdn.net/ithomer/article/details/9936743" target="_blank" rel="external">JVM 基础知识</a></p>
+<p><a href="http://blog.csdn.net/ithomer/article/details/6252552" target="_blank" rel="external">Java 内存模型及GC原理</a></p>
+<h3 id="二-案例解析"><a href="#二-案例解析" class="headerlink" title="二 案例解析"></a>二 案例解析</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </div><div class="line">        <span class="comment">/** </span></div><div class="line"><span class="comment">         * 情景一：字符串池 </span></div><div class="line"><span class="comment">         * JAVA虚拟机(JVM)中存在着一个字符串池，其中保存着很多String对象; </span></div><div class="line"><span class="comment">         * 并且可以被共享使用，因此它提高了效率。 </span></div><div class="line"><span class="comment">         * 由于String类是final的，它的值一经创建就不可改变。 </span></div><div class="line"><span class="comment">         * 字符串池由String类维护，我们可以调用intern()方法来访问字符串池。  </span></div><div class="line"><span class="comment">         */</span>  </div><div class="line">        String s1 = <span class="string">"abc"</span>;     </div><div class="line">        <span class="comment">//↑ 在字符串池创建了一个对象  </span></div><div class="line">        String s2 = <span class="string">"abc"</span>;     </div><div class="line">        <span class="comment">//↑ 字符串pool已经存在对象“abc”(共享),所以创建0个对象，累计创建一个对象  </span></div><div class="line">        System.out.println(<span class="string">"s1 == s2 : "</span>+(s1==s2));    </div><div class="line">        <span class="comment">//↑ true 指向同一个对象，  </span></div><div class="line">        System.out.println(<span class="string">"s1.equals(s2) : "</span> + (s1.equals(s2)));    </div><div class="line">        <span class="comment">//↑ true  值相等  </span></div><div class="line">        <span class="comment">//↑------------------------------------------------------over  </span></div><div class="line">        <span class="comment">/** </span></div><div class="line"><span class="comment">         * 情景二：关于new String("") </span></div><div class="line"><span class="comment">         *  </span></div><div class="line"><span class="comment">         */</span>  </div><div class="line">        String s3 = <span class="keyword">new</span> String(<span class="string">"abc"</span>);  </div><div class="line">        <span class="comment">//↑ 创建了两个对象，一个存放在字符串池中，一个存在与堆区中；  </span></div><div class="line">        <span class="comment">//↑ 还有一个对象引用s3存放在栈中  </span></div><div class="line">        String s4 = <span class="keyword">new</span> String(<span class="string">"abc"</span>);  </div><div class="line">        <span class="comment">//↑ 字符串池中已经存在“abc”对象，所以只在堆中创建了一个对象  </span></div><div class="line">        System.out.println(<span class="string">"s3 == s4 : "</span>+(s3==s4));  </div><div class="line">        <span class="comment">//↑false   s3和s4栈区的地址不同，指向堆区的不同地址；  </span></div><div class="line">        System.out.println(<span class="string">"s3.equals(s4) : "</span>+(s3.equals(s4)));  </div><div class="line">        <span class="comment">//↑true  s3和s4的值相同  </span></div><div class="line">        System.out.println(<span class="string">"s1 == s3 : "</span>+(s1==s3));  </div><div class="line">        <span class="comment">//↑false 存放的地区多不同，一个栈区，一个堆区  </span></div><div class="line">        System.out.println(<span class="string">"s1.equals(s3) : "</span>+(s1.equals(s3)));  </div><div class="line">        <span class="comment">//↑true  值相同  </span></div><div class="line">        <span class="comment">//↑------------------------------------------------------over  </span></div><div class="line">        <span class="comment">/** </span></div><div class="line"><span class="comment">         * 情景三：  </span></div><div class="line"><span class="comment">         * 由于常量的值在编译的时候就被确定(优化)了。 </span></div><div class="line"><span class="comment">         * 在这里，"ab"和"cd"都是常量，因此变量str3的值在编译时就可以确定。 </span></div><div class="line"><span class="comment">         * 这行代码编译后的效果等同于： String str3 = "abcd"; </span></div><div class="line"><span class="comment">         */</span>  </div><div class="line">        String str1 = <span class="string">"ab"</span> + <span class="string">"cd"</span>;  <span class="comment">//1个对象  </span></div><div class="line">        String str11 = <span class="string">"abcd"</span>;   </div><div class="line">        System.out.println(<span class="string">"str1 = str11 : "</span>+ (str1 == str11));  </div><div class="line">        <span class="comment">//↑------------------------------------------------------over  </span></div><div class="line">        <span class="comment">/** </span></div><div class="line"><span class="comment">         * 情景四：  </span></div><div class="line"><span class="comment">         * 局部变量str2,str3存储的是存储两个拘留字符串对象(intern字符串对象)的地址。 </span></div><div class="line"><span class="comment">         *  </span></div><div class="line"><span class="comment">         * 第三行代码原理(str2+str3)： </span></div><div class="line"><span class="comment">         * 运行期JVM首先会在堆中创建一个StringBuilder类， </span></div><div class="line"><span class="comment">         * 同时用str2指向的拘留字符串对象完成初始化， </span></div><div class="line"><span class="comment">         * 然后调用append方法完成对str3所指向的拘留字符串的合并， </span></div><div class="line"><span class="comment">         * 接着调用StringBuilder的toString()方法在堆中创建一个String对象， </span></div><div class="line"><span class="comment">         * 最后将刚生成的String对象的堆地址存放在局部变量str3中。 </span></div><div class="line"><span class="comment">         *  </span></div><div class="line"><span class="comment">         * 而str5存储的是字符串池中"abcd"所对应的拘留字符串对象的地址。 </span></div><div class="line"><span class="comment">         * str4与str5地址当然不一样了。 </span></div><div class="line"><span class="comment">         *  </span></div><div class="line"><span class="comment">         * 内存中实际上有五个字符串对象： </span></div><div class="line"><span class="comment">         *       三个拘留字符串对象、一个String对象和一个StringBuilder对象。 </span></div><div class="line"><span class="comment">         */</span>  </div><div class="line">        String str2 = <span class="string">"ab"</span>;  <span class="comment">//1个对象  </span></div><div class="line">        String str3 = <span class="string">"cd"</span>;  <span class="comment">//1个对象                                         </span></div><div class="line">        String str4 = str2+str3;                                        </div><div class="line">        String str5 = <span class="string">"abcd"</span>;    </div><div class="line">        System.out.println(<span class="string">"str4 = str5 : "</span> + (str4==str5)); <span class="comment">// false  </span></div><div class="line">        <span class="comment">//↑------------------------------------------------------over  </span></div><div class="line">        <span class="comment">/** </span></div><div class="line"><span class="comment">         * 情景五： </span></div><div class="line"><span class="comment">         *  JAVA编译器对string + 基本类型/常量 是当成常量表达式直接求值来优化的。 </span></div><div class="line"><span class="comment">         *  运行期的两个string相加，会产生新的对象的，存储在堆(heap)中 </span></div><div class="line"><span class="comment">         */</span>  </div><div class="line">        String str6 = <span class="string">"b"</span>;  </div><div class="line">        String str7 = <span class="string">"a"</span> + str6;  </div><div class="line">        String str67 = <span class="string">"ab"</span>;  </div><div class="line">        System.out.println(<span class="string">"str7 = str67 : "</span>+ (str7 == str67));  </div><div class="line">        <span class="comment">//↑str6为变量，在运行期才会被解析。  </span></div><div class="line">        <span class="keyword">final</span> String str8 = <span class="string">"b"</span>;  </div><div class="line">        String str9 = <span class="string">"a"</span> + str8;  </div><div class="line">        String str89 = <span class="string">"ab"</span>;  </div><div class="line">        System.out.println(<span class="string">"str9 = str89 : "</span>+ (str9 == str89));  </div><div class="line">        <span class="comment">//↑str8为常量变量，编译期会被优化  </span></div><div class="line">        <span class="comment">//↑------------------------------------------------------over  </span></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h2 id="五-总结"><a href="#五-总结" class="headerlink" title="五 总结"></a>五 总结</h2><h2 id="一-String类初始化后是不可变的-immutable"><a href="#一-String类初始化后是不可变的-immutable" class="headerlink" title="一 String类初始化后是不可变的(immutable)"></a>一 String类初始化后是不可变的(immutable)</h2><p>这一说又要说很多，大家只要知道String的实例一旦生成就不会再改变了，比如说：String str=”kv”+”ill”+” “+”ans”; 就是有4个字符串常量，首先”kv”和”ill”生成了”kvill”存在内存中，然后”kvill”又和” ” 生成 “kvill “存在内存中，最后又和生成了”kvill ans”;并把这个字符串的地址赋给了str,就是因为String的”不可变”产生了很多临时变量，这也就是为什么建议用StringBuffer的原 因了，因为StringBuffer是可改变的。 </p>
+<p>　　下面是<strong>一些String相关的常见问题</strong>：<br>　　String中的final用法和理解<br>　　final StringBuffer a = new StringBuffer(“111”);<br>　　final StringBuffer b = new StringBuffer(“222”);<br>　　a=b;//此句编译不通过  final StringBuffer a = new StringBuffer(“111”);<br>　　a.append(“222”);// 编译通过<br>　　可见，<strong>final只对引用的”值”(即内存地址)有效，它迫使引用只能指向初始指向的那个对象，改变它的指向会导致编译期错误。</strong>至于它所指向的对象的变化，final是不负责的。 </p>
+<p>2.代码中的字符串常量在编译的过程中收集并放在class文件的常量区中，如”123”、”123”+”456”等，含有变量的表达式不会收录，如”123”+a。</p>
+<p>3.JVM在加载类的时候，根据常量区中的字符串生成常量池，每个字符序列如”123”会生成一个实例放在常量池里，这个实例是不在堆里的，也不会被GC，这个实例的value属性从源码的构造函数看应该是用new创建数组置入123的，所以按我的理解此时value存放的字符数组地址是在堆里，如果有误的话欢迎大家指正。</p>
+<h3 id="二-使用String不一定创建对象"><a href="#二-使用String不一定创建对象" class="headerlink" title="二 使用String不一定创建对象"></a>二 使用String不一定创建对象</h3><p>在执行到双引号包含字符串的语句时，如String a = “123”，JVM会先到常量池里查找，如果有的话返回常量池里的这个实例的引用，否则的话创建一个新实例并置入常量池里。如果是 String a = “123” + b (假设b是”456”)，前半部分”123”还是走常量池的路线，但是这个+操作符其实是转换成[SringBuffer].Appad()来实现的，所以最终a得到是一个新的实例引用，而且a的value存放的是一个新申请的字符数组内存空间的地址(存放着”123456”)，而此时”123456”在常量池中是未必存在的。</p>
+<p>要注意: 我们在使用诸如String str = “abc”；的格式定义类时，总是想当然地认为，创建了String类的对象str。<strong>担心陷阱！对象可能并没有被创建！而可能只是指向一个先前已经创建的对象。</strong>只有通过new()方法才能保证每次都创建一个新的对象</p>
+<h3 id="三-使用new-String，一定创建对象"><a href="#三-使用new-String，一定创建对象" class="headerlink" title="三 使用new String，一定创建对象"></a>三 使用new String，一定创建对象</h3><p>在执行String a = new String(“123”)的时候，首先走常量池的路线取到一个实例的引用，然后在堆上创建一个新的String实例，走以下构造函数给value属性赋值，然后把实例引用赋值给a：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(String original)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> size = original.count;</div><div class="line">    <span class="keyword">char</span>[] originalValue = original.value;</div><div class="line">    <span class="keyword">char</span>[] v;</div><div class="line">      <span class="keyword">if</span> (originalValue.length &gt; size) &#123;</div><div class="line">         <span class="comment">// The array representing the String is bigger than the new</span></div><div class="line">         <span class="comment">// String itself.  Perhaps this constructor is being called</span></div><div class="line">         <span class="comment">// in order to trim the baggage, so make a copy of the array.</span></div><div class="line">            <span class="keyword">int</span> off = original.offset;</div><div class="line">            v = Arrays.copyOfRange(originalValue, off, off+size);</div><div class="line">     &#125; <span class="keyword">else</span> &#123;</div><div class="line">         <span class="comment">// The array representing the String is the same</span></div><div class="line">         <span class="comment">// size as the String, so no point in making a copy.</span></div><div class="line">        v = originalValue;</div><div class="line">     &#125;</div><div class="line">    <span class="keyword">this</span>.offset = <span class="number">0</span>;</div><div class="line">    <span class="keyword">this</span>.count = size;</div><div class="line">    <span class="keyword">this</span>.value = v;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>从中我们可以看到，虽然是新创建了一个String的实例，但是value是等于常量池中的实例的value，即是说没有new一个新的字符数组来存放”123”。</p>
+<p>如果是String a = new String(“123”+b)的情况，首先看回第4点，”123”+b得到一个实例后，再按上面的构造函数执行。</p>
+<h3 id="四-String-intern"><a href="#四-String-intern" class="headerlink" title="四 String.intern()"></a>四 String.intern()</h3><p>String对象的实例调用intern方法后，可以让JVM检查常量池，如果没有实例的value属性对应的字符串序列比如”123”(注意是检查字符串序列而不是检查实例本身)，就将本实例放入常量池，如果有当前实例的value属性对应的字符串序列”123”在常量池中存在，则返回常量池中”123”对应的实例的引用而不是当前实例的引用，即使当前实例的value也是”123”。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public native String intern();</div></pre></td></tr></table></figure>
+<p>存在于.class文件中的常量池，在运行期被JVM装载，并且可以扩充。String的 intern()方法就是扩充常量池的 一个方法；当一个String实例str调用intern()方法时，Java 查找常量池中 是否有相同Unicode的字符串常量，如果有，则返回其的引用，如果没有，则在常 量池中增加一个Unicode等于str的字符串并返回它的引用；看示例就清楚了</p>
+<p><a href="javascript:void(0" target="_blank" rel="external"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public static void main(String[] args) &#123;</div><div class="line">        String s0 = &quot;kvill&quot;; </div><div class="line">        String s1 = new String(&quot;kvill&quot;); </div><div class="line">        String s2 = new String(&quot;kvill&quot;); </div><div class="line">        System.out.println( s0 == s1 ); //false</div><div class="line">        System.out.println( &quot;**********&quot; ); </div><div class="line">        s1.intern(); //虽然执行了s1.intern(),但它的返回值没有赋给s1</div><div class="line">        s2 = s2.intern(); //把常量池中&quot;kvill&quot;的引用赋给s2 </div><div class="line">        System.out.println( s0 == s1); //flase</div><div class="line">        System.out.println( s0 == s1.intern() ); //true//说明s1.intern()返回的是常量池中&quot;kvill&quot;的引用</div><div class="line">        System.out.println( s0 == s2 ); //true</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p><a href="javascript:void(0" target="_blank" rel="external"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<p>最后我再破除一个错误的理解：有人说，“使用 String.intern() 方法则可以将一个 String 类的保存到一个全局 String 表中 ，如果具有相同值的 Unicode 字符串已经在这个表中，那么该方法返回表中已有字符串的地址，如果在表中没有相同值的字符串，则将自己的地址注册到表中”如果我把他说的这个全局的 String 表理解为常量池的话，他的最后一句话，”如果在表中没有相同值的字符串，则将自己的地址注册到表中”是错的： <a href="javascript:void(0" target="_blank" rel="external"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public static void main(String[] args) &#123;        </div><div class="line">        String s1 = new String(&quot;kvill&quot;); </div><div class="line">        String s2 = s1.intern(); </div><div class="line">        System.out.println( s1 == s1.intern() ); //false</div><div class="line">        System.out.println( s1 + &quot; &quot; + s2 ); //kvill kvill</div><div class="line">        System.out.println( s2 == s1.intern() ); //true</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p><a href="javascript:void(0" target="_blank" rel="external"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<p>在这个类中我们没有声名一个”kvill”常量，所以常量池中一开始是没有”kvill”的，当我们调用s1.intern()后就在常量池中新添加了一 个”kvill”常量，原来的不在常量池中的”kvill”仍然存在，也就不是“将自己的地址注册到常量池中”了。<br>　　s1==s1.intern() 为false说明原来的”kvill”仍然存在；s2现在为常量池中”kvill”的地址，所以有s2==s1.intern()为true。</p>
+<h3 id="五-StringBuffer与StringBuilder的区别，它们的应用场景是什么？"><a href="#五-StringBuffer与StringBuilder的区别，它们的应用场景是什么？" class="headerlink" title="五 StringBuffer与StringBuilder的区别，它们的应用场景是什么？"></a>五 StringBuffer与StringBuilder的区别，它们的应用场景是什么？</h3><p>jdk的实现中StringBuffer与StringBuilder都继承自AbstractStringBuilder，对于多线程的安全与非安全看到StringBuffer中方法前面的一堆synchronized就大概了解了。</p>
+<p>这里随便讲讲AbstractStringBuilder的实现原理：我们知道使用StringBuffer等无非就是为了提高java中字符串连接的效率，因为直接使用+进行字符串连接的话，jvm会创建多个String对象，因此造成一定的开销。AbstractStringBuilder中采用一个char数组来保存需要append的字符串，char数组有一个初始大小，当append的字符串长度超过当前char数组容量时，则对char数组进行动态扩展，也即重新申请一段更大的内存空间，然后将当前char数组拷贝到新的位置，因为重新分配内存并拷贝的开销比较大，所以每次重新申请内存空间都是采用申请大于当前需要的内存空间的方式，这里是2倍</p>
+<p>【</p>
+<p>​    StringBuffer 始于 JDK 1.0<br>​    StringBuilder 始于 JDK 1.5<br>​    从 JDK 1.5 开始，带有字符串变量的连接操作（+），JVM 内部采用的是<br>​    StringBuilder 来实现的，而之前这个操作是采用 StringBuffer 实现的。</p>
+<p>】</p>
+<p>我们通过一个简单的程序来看其执行的流程：</p>
+<p><a href="javascript:void(0" target="_blank" rel="external"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public class Buffer &#123;  </div><div class="line">     public static void main(String[] args) &#123;  </div><div class="line">            String s1 = &quot;aaaaa&quot;;  </div><div class="line">            String s2 = &quot;bbbbb&quot;;  </div><div class="line">            String r = null;  </div><div class="line">            int i = 3694;  </div><div class="line">            r = s1 + i + s2;   </div><div class="line">              </div><div class="line">            for(int j=0;i&lt;10;j++)&#123;  </div><div class="line">                r+=&quot;23124&quot;;  </div><div class="line">            &#125;  </div><div class="line">     &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="javascript:void(0" target="_blank" rel="external"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<p>使用命令javap -c Buffer查看其字节码实现：<img src="/2017/11/06/11-6/1.png" alt="1">将清单1和清单2对应起来看，清单2的字节码中ldc指令即从常量池中加载“aaaaa”字符串到栈顶，istore_1将“aaaaa”存到变量1中，后面的一样，sipush是将一个短整型常量值(-32768~32767)推送至栈顶，这里是常量“3694”，更多的Java指令集请查看另一篇文章“<a href="http://blog.csdn.net/shi1122/article/details/8053605" target="_blank" rel="external">Java指令集</a>”。</p>
+<p>让我们直接看到13,13~17是new了一个StringBuffer对象并调用其初始化方法，20~21则是先通过aload_1将变量1压到栈顶，前面说过变量1放的就是字符串常量“aaaaa”，接着通过指令invokevirtual调用StringBuffer的append方法将“aaaaa”拼接起来，后续的24~30同理。最后在33调用StringBuffer的toString函数获得String结果并通过astore存到变量3中。</p>
+<p>看到这里可能有人会说，“既然JVM内部采用了StringBuffer来连接字符串了，那么我们自己就不用用StringBuffer，直接用”+“就行了吧！“。是么？当然不是了。俗话说”存在既有它的理由”，让我们继续看后面的循环对应的字节码。</p>
+<p>37~42都是进入for循环前的一些准备工作，37,38是将j置为1。44这里通过if_icmpge将j与10进行比较，如果j大于10则直接跳转到73，也即return语句退出函数；否则进入循环，也即47~66的字节码。这里我们只需看47到51就知道为什么我们要在代码中自己使用StringBuffer来处理字符串的连接了，因为每次执行“+”操作时jvm都要new一个StringBuffer对象来处理字符串的连接，这在涉及很多的字符串连接操作时开销会很大。</p>
+<p>参考：<a href="http://blog.csdn.net/shi1122/article/details/8053680" target="_blank" rel="external">java那点事——StringBuffer与StringBuilder原理与区别</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/05/11-5/" rel="next" title="日程表">
+                <i class="fa fa-chevron-left"></i> 日程表
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://www.xnmll.cn/wp-content/uploads/2017/09/index.jpg"
+                alt="xnmll" />
+            
+              <p class="site-author-name" itemprop="name">xnmll</p>
+              <p class="site-description motion-element" itemprop="description">For you will still be here tomorrow But your dreams may not</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/xnmll" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/CnXnmll" target="_blank" title="Twitter">
+                    
+                      <i class="fa fa-fw fa-globe"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/5880251485/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" title="Weibo">
+                    
+                      <i class="fa fa-fw fa-globe"></i>Weibo</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.xnmll.cn/" title="新年快乐" target="_blank">新年快乐</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.llanc.cn/" title="llanc" target="_blank">llanc</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-Java中的数据类型"><span class="nav-number">1.</span> <span class="nav-text">一 Java中的数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-基本类型"><span class="nav-number">1.1.</span> <span class="nav-text">一 基本类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-包装类"><span class="nav-number">1.2.</span> <span class="nav-text">二 包装类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-String是一个特殊的包装类数据"><span class="nav-number">2.</span> <span class="nav-text">二 String是一个特殊的包装类数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-String创建"><span class="nav-number">2.1.</span> <span class="nav-text">一 String创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-详细例子"><span class="nav-number">2.2.</span> <span class="nav-text">二 详细例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-Java-JVM"><span class="nav-number">3.</span> <span class="nav-text">三 Java JVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-Java内存模型"><span class="nav-number">3.1.</span> <span class="nav-text">一 Java内存模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-案例解析"><span class="nav-number">3.2.</span> <span class="nav-text">二 案例解析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五-总结"><span class="nav-number">4.</span> <span class="nav-text">五 总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一-String类初始化后是不可变的-immutable"><span class="nav-number">5.</span> <span class="nav-text">一 String类初始化后是不可变的(immutable)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二-使用String不一定创建对象"><span class="nav-number">5.1.</span> <span class="nav-text">二 使用String不一定创建对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三-使用new-String，一定创建对象"><span class="nav-number">5.2.</span> <span class="nav-text">三 使用new String，一定创建对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四-String-intern"><span class="nav-number">5.3.</span> <span class="nav-text">四 String.intern()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五-StringBuffer与StringBuilder的区别，它们的应用场景是什么？"><span class="nav-number">5.4.</span> <span class="nav-text">五 StringBuffer与StringBuilder的区别，它们的应用场景是什么？</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xnmll</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a></div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://xnmll.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/11/06/11-6/';
+          this.page.identifier = '2017/11/06/11-6/';
+          this.page.title = 'java字符串详解';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://xnmll.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
