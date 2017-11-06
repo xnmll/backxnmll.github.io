@@ -89,18 +89,12 @@
 <meta property="og:site_name" content="xnmll&#39;s blog">
 <meta property="og:description" content="一 Java中的数据类型一 基本类型一种是基本类型(primitive types),共有8种，即int,short, long, byte, float, double, boolean, char(注意，并没有string的基本类型)。 这种类型的定义是通过诸如int a = 3; long b = 255L;的形式来定义的，称为自动变量。值得注意的是，自动变量存的是字面值，不是类的实例，即不">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
-<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
-<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
-<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
-<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
-<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
 <meta property="og:image" content="http://yoursite.com/2017/11/06/11-6/1.png">
-<meta property="og:updated_time" content="2017-11-06T07:53:01.471Z">
+<meta property="og:updated_time" content="2017-11-06T07:57:24.863Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java字符串详解">
 <meta name="twitter:description" content="一 Java中的数据类型一 基本类型一种是基本类型(primitive types),共有8种，即int,short, long, byte, float, double, boolean, char(注意，并没有string的基本类型)。 这种类型的定义是通过诸如int a = 3; long b = 255L;的形式来定义的，称为自动变量。值得注意的是，自动变量存的是字面值，不是类的实例，即不">
-<meta name="twitter:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta name="twitter:image" content="http://yoursite.com/2017/11/06/11-6/1.png">
 
 
 
@@ -424,14 +418,11 @@
 <p>从中我们可以看到，虽然是新创建了一个String的实例，但是value是等于常量池中的实例的value，即是说没有new一个新的字符数组来存放”123”。</p>
 <p>如果是String a = new String(“123”+b)的情况，首先看回第4点，”123”+b得到一个实例后，再按上面的构造函数执行。</p>
 <h3 id="四-String-intern"><a href="#四-String-intern" class="headerlink" title="四 String.intern()"></a>四 String.intern()</h3><p>String对象的实例调用intern方法后，可以让JVM检查常量池，如果没有实例的value属性对应的字符串序列比如”123”(注意是检查字符串序列而不是检查实例本身)，就将本实例放入常量池，如果有当前实例的value属性对应的字符串序列”123”在常量池中存在，则返回常量池中”123”对应的实例的引用而不是当前实例的引用，即使当前实例的value也是”123”。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public native String intern();</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> String <span class="title">intern</span><span class="params">()</span></span>;</div></pre></td></tr></table></figure>
 <p>存在于.class文件中的常量池，在运行期被JVM装载，并且可以扩充。String的 intern()方法就是扩充常量池的 一个方法；当一个String实例str调用intern()方法时，Java 查找常量池中 是否有相同Unicode的字符串常量，如果有，则返回其的引用，如果没有，则在常 量池中增加一个Unicode等于str的字符串并返回它的引用；看示例就清楚了</p>
-<p><a href="javascript:void(0" target="_blank" rel="external"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public static void main(String[] args) &#123;</div><div class="line">        String s0 = &quot;kvill&quot;; </div><div class="line">        String s1 = new String(&quot;kvill&quot;); </div><div class="line">        String s2 = new String(&quot;kvill&quot;); </div><div class="line">        System.out.println( s0 == s1 ); //false</div><div class="line">        System.out.println( &quot;**********&quot; ); </div><div class="line">        s1.intern(); //虽然执行了s1.intern(),但它的返回值没有赋给s1</div><div class="line">        s2 = s2.intern(); //把常量池中&quot;kvill&quot;的引用赋给s2 </div><div class="line">        System.out.println( s0 == s1); //flase</div><div class="line">        System.out.println( s0 == s1.intern() ); //true//说明s1.intern()返回的是常量池中&quot;kvill&quot;的引用</div><div class="line">        System.out.println( s0 == s2 ); //true</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p><a href="javascript:void(0" target="_blank" rel="external"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
-<p>最后我再破除一个错误的理解：有人说，“使用 String.intern() 方法则可以将一个 String 类的保存到一个全局 String 表中 ，如果具有相同值的 Unicode 字符串已经在这个表中，那么该方法返回表中已有字符串的地址，如果在表中没有相同值的字符串，则将自己的地址注册到表中”如果我把他说的这个全局的 String 表理解为常量池的话，他的最后一句话，”如果在表中没有相同值的字符串，则将自己的地址注册到表中”是错的： <a href="javascript:void(0" target="_blank" rel="external"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public static void main(String[] args) &#123;        </div><div class="line">        String s1 = new String(&quot;kvill&quot;); </div><div class="line">        String s2 = s1.intern(); </div><div class="line">        System.out.println( s1 == s1.intern() ); //false</div><div class="line">        System.out.println( s1 + &quot; &quot; + s2 ); //kvill kvill</div><div class="line">        System.out.println( s2 == s1.intern() ); //true</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p><a href="javascript:void(0" target="_blank" rel="external"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        String s0 = <span class="string">"kvill"</span>; </div><div class="line">        String s1 = <span class="keyword">new</span> String(<span class="string">"kvill"</span>); </div><div class="line">        String s2 = <span class="keyword">new</span> String(<span class="string">"kvill"</span>); </div><div class="line">        System.out.println( s0 == s1 ); <span class="comment">//false</span></div><div class="line">        System.out.println( <span class="string">"**********"</span> ); </div><div class="line">        s1.intern(); <span class="comment">//虽然执行了s1.intern(),但它的返回值没有赋给s1</span></div><div class="line">        s2 = s2.intern(); <span class="comment">//把常量池中"kvill"的引用赋给s2 </span></div><div class="line">        System.out.println( s0 == s1); <span class="comment">//flase</span></div><div class="line">        System.out.println( s0 == s1.intern() ); <span class="comment">//true//说明s1.intern()返回的是常量池中"kvill"的引用</span></div><div class="line">        System.out.println( s0 == s2 ); <span class="comment">//true</span></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>最后我再破除一个错误的理解：有人说，“使用 String.intern() 方法则可以将一个 String 类的保存到一个全局 String 表中 ，如果具有相同值的 Unicode 字符串已经在这个表中，那么该方法返回表中已有字符串的地址，如果在表中没有相同值的字符串，则将自己的地址注册到表中”如果我把他说的这个全局的 String 表理解为常量池的话，他的最后一句话，”如果在表中没有相同值的字符串，则将自己的地址注册到表中”是错的： </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;        </div><div class="line">        String s1 = <span class="keyword">new</span> String(<span class="string">"kvill"</span>); </div><div class="line">        String s2 = s1.intern(); </div><div class="line">        System.out.println( s1 == s1.intern() ); <span class="comment">//false</span></div><div class="line">        System.out.println( s1 + <span class="string">" "</span> + s2 ); <span class="comment">//kvill kvill</span></div><div class="line">        System.out.println( s2 == s1.intern() ); <span class="comment">//true</span></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <p>在这个类中我们没有声名一个”kvill”常量，所以常量池中一开始是没有”kvill”的，当我们调用s1.intern()后就在常量池中新添加了一 个”kvill”常量，原来的不在常量池中的”kvill”仍然存在，也就不是“将自己的地址注册到常量池中”了。<br>　　s1==s1.intern() 为false说明原来的”kvill”仍然存在；s2现在为常量池中”kvill”的地址，所以有s2==s1.intern()为true。</p>
 <h3 id="五-StringBuffer与StringBuilder的区别，它们的应用场景是什么？"><a href="#五-StringBuffer与StringBuilder的区别，它们的应用场景是什么？" class="headerlink" title="五 StringBuffer与StringBuilder的区别，它们的应用场景是什么？"></a>五 StringBuffer与StringBuilder的区别，它们的应用场景是什么？</h3><p>jdk的实现中StringBuffer与StringBuilder都继承自AbstractStringBuilder，对于多线程的安全与非安全看到StringBuffer中方法前面的一堆synchronized就大概了解了。</p>
 <p>这里随便讲讲AbstractStringBuilder的实现原理：我们知道使用StringBuffer等无非就是为了提高java中字符串连接的效率，因为直接使用+进行字符串连接的话，jvm会创建多个String对象，因此造成一定的开销。AbstractStringBuilder中采用一个char数组来保存需要append的字符串，char数组有一个初始大小，当append的字符串长度超过当前char数组容量时，则对char数组进行动态扩展，也即重新申请一段更大的内存空间，然后将当前char数组拷贝到新的位置，因为重新分配内存并拷贝的开销比较大，所以每次重新申请内存空间都是采用申请大于当前需要的内存空间的方式，这里是2倍</p>
@@ -439,9 +430,7 @@
 <p>​    StringBuffer 始于 JDK 1.0<br>​    StringBuilder 始于 JDK 1.5<br>​    从 JDK 1.5 开始，带有字符串变量的连接操作（+），JVM 内部采用的是<br>​    StringBuilder 来实现的，而之前这个操作是采用 StringBuffer 实现的。</p>
 <p>】</p>
 <p>我们通过一个简单的程序来看其执行的流程：</p>
-<p><a href="javascript:void(0" target="_blank" rel="external"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public class Buffer &#123;  </div><div class="line">     public static void main(String[] args) &#123;  </div><div class="line">            String s1 = &quot;aaaaa&quot;;  </div><div class="line">            String s2 = &quot;bbbbb&quot;;  </div><div class="line">            String r = null;  </div><div class="line">            int i = 3694;  </div><div class="line">            r = s1 + i + s2;   </div><div class="line">              </div><div class="line">            for(int j=0;i&lt;10;j++)&#123;  </div><div class="line">                r+=&quot;23124&quot;;  </div><div class="line">            &#125;  </div><div class="line">     &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><a href="javascript:void(0" target="_blank" rel="external"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Buffer</span> </span>&#123;  </div><div class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </div><div class="line">            String s1 = <span class="string">"aaaaa"</span>;  </div><div class="line">            String s2 = <span class="string">"bbbbb"</span>;  </div><div class="line">            String r = <span class="keyword">null</span>;  </div><div class="line">            <span class="keyword">int</span> i = <span class="number">3694</span>;  </div><div class="line">            r = s1 + i + s2;   </div><div class="line">              </div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;i&lt;<span class="number">10</span>;j++)&#123;  </div><div class="line">                r+=<span class="string">"23124"</span>;  </div><div class="line">            &#125;  </div><div class="line">     &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>使用命令javap -c Buffer查看其字节码实现：<img src="/2017/11/06/11-6/1.png" alt="1">将清单1和清单2对应起来看，清单2的字节码中ldc指令即从常量池中加载“aaaaa”字符串到栈顶，istore_1将“aaaaa”存到变量1中，后面的一样，sipush是将一个短整型常量值(-32768~32767)推送至栈顶，这里是常量“3694”，更多的Java指令集请查看另一篇文章“<a href="http://blog.csdn.net/shi1122/article/details/8053605" target="_blank" rel="external">Java指令集</a>”。</p>
 <p>让我们直接看到13,13~17是new了一个StringBuffer对象并调用其初始化方法，20~21则是先通过aload_1将变量1压到栈顶，前面说过变量1放的就是字符串常量“aaaaa”，接着通过指令invokevirtual调用StringBuffer的append方法将“aaaaa”拼接起来，后续的24~30同理。最后在33调用StringBuffer的toString函数获得String结果并通过astore存到变量3中。</p>
 <p>看到这里可能有人会说，“既然JVM内部采用了StringBuffer来连接字符串了，那么我们自己就不用用StringBuffer，直接用”+“就行了吧！“。是么？当然不是了。俗话说”存在既有它的理由”，让我们继续看后面的循环对应的字节码。</p>
@@ -621,19 +610,13 @@
                 <span class="links-of-author-item">
                   <a href="https://github.com/xnmll" target="_blank" title="GitHub">
                     
-                      <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
                 </span>
               
                 <span class="links-of-author-item">
                   <a href="https://twitter.com/CnXnmll" target="_blank" title="Twitter">
                     
-                      <i class="fa fa-fw fa-globe"></i>Twitter</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="http://weibo.com/5880251485/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" title="Weibo">
-                    
-                      <i class="fa fa-fw fa-globe"></i>Weibo</a>
+                      <i class="fa fa-fw fa-twitter"></i>Twitter</a>
                 </span>
               
             
@@ -704,7 +687,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; 2017/11/1 &mdash; <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
