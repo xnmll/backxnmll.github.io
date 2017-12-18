@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xnmll.cn/"/>
-  <updated>2017-12-13T14:16:56.464Z</updated>
+  <updated>2017-12-18T13:57:37.225Z</updated>
   <id>http://xnmll.cn/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>19周及以后课程设计</title>
+    <link href="http://xnmll.cn/2017/12/18/19%E5%91%A8%E5%8F%8A%E4%BB%A5%E5%90%8E%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/"/>
+    <id>http://xnmll.cn/2017/12/18/19周及以后课程设计/</id>
+    <published>2017-12-18T13:49:39.000Z</published>
+    <updated>2017-12-18T13:57:37.225Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h1><p>18周以后第一天，已经算是进入假期了，没有早起？英语很久没有背了。<br>时间是12/18到1/8左右，还有20天回家。</p><h1 id="要求："><a href="#要求：" class="headerlink" title="要求："></a>要求：</h1><p>每天早起，考研英语每天背一个至少，走之前背完一遍<br>课程设计独立完善执行，做一次有意义的课程设计</p><h1 id="细节："><a href="#细节：" class="headerlink" title="细节："></a>细节：</h1><p>week19day01:</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;前言：&quot;&gt;&lt;a href=&quot;#前言：&quot; class=&quot;headerlink&quot; title=&quot;前言：&quot;&gt;&lt;/a&gt;前言：&lt;/h1&gt;&lt;p&gt;18周以后第一天，已经算是进入假期了，没有早起？英语很久没有背了。&lt;br&gt;时间是12/18到1/8左右，还有20天回家。&lt;/p&gt;
+&lt;
+      
+    
+    </summary>
+    
+      <category term="日常" scheme="http://xnmll.cn/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+      <category term="成长历程" scheme="http://xnmll.cn/tags/%E6%88%90%E9%95%BF%E5%8E%86%E7%A8%8B/"/>
+    
+      <category term="随机" scheme="http://xnmll.cn/tags/%E9%9A%8F%E6%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
     <title>java笔记</title>
     <link href="http://xnmll.cn/2017/12/13/java%E7%AC%94%E8%AE%B0/"/>
     <id>http://xnmll.cn/2017/12/13/java笔记/</id>
     <published>2017-12-13T14:08:03.000Z</published>
-    <updated>2017-12-13T14:16:56.464Z</updated>
+    <updated>2017-12-14T02:56:38.337Z</updated>
     
     <content type="html"><![CDATA[<p>###很长时间没有整理代码..也没有敲是代码了</p><p><img src="/2017/12/13/java笔记/1.jpg" alt=".."><br>java临近考试，过俩天靠四级..考完后花一天整合代码 很久没敲有点生疏，整合之后放在github上还需要学点github…各种小白，新用的ide idea，感觉很舒服。<br>上床写试卷了..</p>]]></content>
     
